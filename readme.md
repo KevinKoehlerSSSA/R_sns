@@ -1,7 +1,7 @@
 ![](dirpolis_logo_eng.png)
 
 # Introduction to R
-Thsi is the GitHub repository for the Intro to R class (AY 24/25) at SNS. On this site, you will find code, data, and other material we will use in class.
+This is the GitHub repository for the Intro to R class (AY 24/25) at SNS. On this site, you will find code, data, and other material we will use in class.
 ## Syllabus
 - [Syllabus](Syllabus.pdf)
 ## Data and codebook
