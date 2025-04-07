@@ -13,7 +13,5 @@ In the first part of the class, we will work with data on Tunisia. Below are the
 ## Slides and code files
 ### Session 1
 - [Slides session 1](Session-1.pdf)
-- [Code session 1](#)
-### Session 2
-- [Slides session 2](Session-2.pdf)
-- [Electoral results from Wikipedia](Scrape-Wikipedia.R)
+
+
