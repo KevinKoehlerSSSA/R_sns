@@ -3,7 +3,7 @@
 # Introduction to R
 This is the GitHub repository for the Intro to R class (AY 24/25) at SNS. On this site, you will find code, data, and other material we will use in class.
 ## Syllabus
-- [Syllabus](Syllabus.pdf)
+- [Syllabus](Intro to R Syllabus.pdf)
 ## Data and codebook
 In the first part of the class, we will work with data on Tunisia. Below are the codebook and the data of a survey we fielded there in 2014 as well as data files containing the resulst of the 2014 and 2019 legislative elections in Tunisia. 
 - [Codebook Tunisia Survey](Codebook-TUN-Survey.pdf)
