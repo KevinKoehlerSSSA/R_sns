@@ -13,6 +13,6 @@ In the first part of the class, we will work with data on Tunisia. Below are the
 ## Slides and code files
 ### Session 1
 - [Slides session 1](Session-1.pdf)
-- [Code to scrape Wikipedia](#)
+- [Code to scrape Wikipedia](Scrape-Wikipedia.R)
 
 
