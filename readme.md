@@ -14,5 +14,8 @@ In the first part of the class, we will work with data on Tunisia. Below are the
 ### Session 1
 - [Slides session 1](Session-1.pdf)
 - [Code to scrape Wikipedia](Scrape-Wikipedia.R)
+### Session 2
+- [Slides session 2](Session-2.pdf)
+- [Code for Session 2[(Session-2-code.R)
 
 
