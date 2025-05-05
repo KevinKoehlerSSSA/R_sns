@@ -17,5 +17,7 @@ In the first part of the class, we will work with data on Tunisia. Below are the
 ### Session 2
 - [Slides session 2](Session-2.pdf)
 - [Code for Session 2](Session-2-code.R)
-
+### Session 3
+- [Slides session 3](Session-3.pdf)
+- [Markdown code EDA document](EDA.Rmd)
 
