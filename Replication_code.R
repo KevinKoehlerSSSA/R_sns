@@ -29,3 +29,15 @@ summary_table <- kable(sumstats,
                                   "condensed"))
 
 write_lines(summary_table, "summary_table.html")
+
+
+data <- data %>%
+  mutate(
+    positive=rowMeans(cbind(pos1, pos2, pos3), na.rm = T),
+    negative=rowMeans(cbind(neg1, neg2, neg3), na.rm = T),
+    fp_views=(positive-negative)/100,
+    iraq_dummy=ifelse(troops_iraq>0,1,0),
+    afg_dummy=ifelse(troops_afgh>0,1,0),
+    fh=pr+cl,
+    nonnat=ifelse(nonnat1+nonnat2+nonnat3>0,1,0)
+  )
