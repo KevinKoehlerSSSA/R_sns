@@ -1,3 +1,6 @@
+install.packages("haven")
+
+
 library(tidyverse)
 library(haven)
 library(stargazer)
