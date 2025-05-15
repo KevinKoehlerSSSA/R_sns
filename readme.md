@@ -46,7 +46,7 @@ The first four plots use the Tunisia survey data, the final four use the [V-Dem 
 #### R markdown code and resources
 - [Code](Replication1.Rmd)
 - [Reference file](references.bib)
-- [Chicago style file](chicago.csl)
+- [Chicago style file](chicago-author-date.csl)
 
 
 ### Session 5
