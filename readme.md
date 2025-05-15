@@ -34,3 +34,10 @@ The first four plots use the Tunisia survey data, the final four use the [V-Dem 
 - [Markdown cheat sheet](https://github.com/rstudio/cheatsheets/raw/main/rmarkdown-2.0.pdf)
 - [Markdown code EDA document](EDA.Rmd)
 - [Compiled PDF version of EDA document](EDA.pdf)
+
+### Session 4
+- [Slides session 4](Session-4.pdf)
+- [Replication document](Replication1.pdf)
+
+#### Analysis and data for replication
+
