@@ -23,3 +23,26 @@ row6 <- c(table(data$cbcat[data$success==1]),
           table(data$newcb[data$success==1]),
           sum(data$success==1, na.rm=T))
 row7 <- paste0(round(((row5-row6)/row5)*100,0),"%")
+
+
+descriptives <- rbind(row1, row2, row3, row4, row5, row6, row7)
+descriptives <- as.data.frame(descriptives)
+rownames(descriptives) <- c("Total observations",
+                            "No coup attempt",
+                            "% country years with attempts",
+                            "Coup attempts",
+                            "Failed",
+                            "Successful",
+                            "% coup attempts successful")
+
+kable(descriptives,
+      caption = "Counterbalancing and Coups",
+      col.names = c("0",
+                    "1",
+                    "2",
+                    "3+",
+                    "No",
+                    "Yes",
+                    "Total")) %>%
+  add_header_above(c(" ","Number of Counterweights"=4,"New Counterweight"=2,"")) 
+
