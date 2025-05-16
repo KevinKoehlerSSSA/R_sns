@@ -50,3 +50,13 @@ The first four plots use the Tunisia survey data, the final four use the [V-Dem 
 
 
 ### Session 5
+- [Slides session 5](Session-5.pdf)
+
+#### Analysis and data for replication
+- De Bruin, Erica. 2017. "Preventing Coups d’état: How Counterbalancing Works." *Journal of Conflict Resolution* 62(7), 1433-1458. [doi:10.1177/0022002717692652](https://doi.org/10.1177/0022002717692652)
+- The data are available [here](https://doi.org/10.1177/0022002717692652) (scroll all the way down)
+
+#### R markdown resources
+- [Compiled version](Replication2.pdf)
+- [Markdown file](Replication.Rmd)
+- [References file](references.bib)
