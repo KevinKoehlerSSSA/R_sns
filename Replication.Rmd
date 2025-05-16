@@ -1,0 +1,76 @@
+---
+title: "Replication II: Preventing Coups d'état: How Counterbalancing Works"
+author: "Introduction to \\textsf{R}"  
+date: "2025-05-16"
+format: 
+  pdf:
+    latex-engine: xelatex
+    number-sections: true
+    toc: true
+    lot: true
+    lof: true
+engine: knitr
+bibliography: references.bib
+csl: chicago-author-date.csl
+header-includes:
+  - \renewcommand{\arraystretch}{1}
+  - \usepackage{makecell}
+---
+
+\newpage
+# Introduction {#Intro}
+
+Does counterbalancing--the creation of alternative security forces outside of the military chain of command--decrease the risk of military coups? In this document, we replicate the analysis in @debruin2017, focusing in particular on the descriptive analysis in Tables 1 (p. 9) as well as the models in Table 2 (p. 13) and 3 (p. 14). 
+
+This report is structured as follows. Section \ref{hypo} briefly reports the hypotheses developed in @debruin2017. Section \ref{data} describes the data (available [here](https://journals.sagepub.com/doi/abs/10.1177/0022002717692652)). This section also reproduces the descriptive analysis in Table 1 of the original article (Section \ref{descr}). Section \ref{logit} estimates the regression models in Table 2 and some of the models in Table 3. In Section \ref{concl}, we conclude by summarizing the results of our replication.
+
+# The hypotheses {#hypo}
+
+@debruin2017 develops the following hypotheses based on existing research on military coups:
+
+> **Hypothesis 1**: Coups are more likely to succeed against regimes that do not
+counterbalance than those that do.
+
+> **Hypothesis 1a**: Counterbalancing decreases the probability a coup will suc-
+ceed by creating barriers to communication and coordination between forces.
+
+> **Hypothesis 1b**: Counterbalancing decreases the probably a coup will succeed by
+increasing the likelihood that coup plotters will face armed resistance to the coup.
+
+> **Hypothesis 2**: Counterbalancing does not decrease the likelihood of coup
+attempts.
+
+> **Hypothesis 3**: The creation of a new counterweight increases the risk of a
+coup in the following year.
+
+
+# The data {#data}
+
+
+## Descriptive analysis {#descr}
+
+In this section, we reproduce Table 1 in the original article. There is a STATA do-file (`esd_preventingcoups_dofile.do`) which contains the STATA code for the table. Here are the contents: 
+
+```{r echo=TRUE, eval=FALSE}
+*MAIN TEXT TABLES*
+*Table 1: Counterbalancing and Coups
+tab attempt cbcount
+tab attempt newcb
+tab success cbcount
+tab success newcb
+```
+
+# Models {#logit}
+
+Table 3 shows the models from @debruin2017, Table 2. 
+
+
+## Marginal effects {#marg}
+
+The Average Marginal Effect (AME) gives the change in the predicted probability of a successful coup for a one-unit increase in the independent variable. The figure below plots the AME for all variables in Model 3, along with 90, 95, and 99% confidence intervals.
+
+
+# Conclusion {#concl}
+
+\newpage
+# References
