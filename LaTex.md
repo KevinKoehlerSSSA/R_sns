@@ -11,11 +11,12 @@
 
 > **Note:** Restart your system or terminal session after installation to ensure LaTeX is recognized.
 
----
-
 ## ✅ 2. Install Markdown Tools in R
 
 ### Option A – R Markdown (classic)
 Open your R console and run:
-```r
-install.packages("rmarkdown")
+
+`install.packages("rmarkdown")`
+
+## ✅ 3. Verify Installation
+- Compile the [Replication file](Replication.Rmd) to see if the installation worked
