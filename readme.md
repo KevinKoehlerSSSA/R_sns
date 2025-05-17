@@ -1,5 +1,10 @@
 ![](dirpolis_logo_eng.png)
 
+
+> ⚠️ **LaTex Installation**  
+> See the [Installation guide](LaTex.md) for instructions on how to install LaTex.
+
+
 # Introduction to R
 This is the GitHub repository for the Intro to R class (AY 24/25) at SNS. On this site, you will find code, data, and other material we will use in class.
 ## Syllabus
