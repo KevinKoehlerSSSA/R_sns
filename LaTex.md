@@ -13,7 +13,7 @@
 
 ## ✅ 2. Install Markdown Tools in R
 
-### Option A – R Markdown (classic)
+### R Markdown 
 Open your R console and run:
 
 `install.packages("rmarkdown")`
