@@ -66,3 +66,9 @@ The first four plots use the Tunisia survey data, the final four use the [V-Dem 
 - [Markdown file](Replication.Rmd)
 - [References file](references.bib)
 - [CSL file](chicago-author-date.csl)
+
+  
+### Session 6
+- [Slides session 6](Session-6.pdf)
+- [Web scraping exercise](Scraping.pdf)
+
