@@ -33,3 +33,9 @@ us_table <- us_table %>%
   mutate(name=str_extract(name,".+(?=\\()"),
          start_term=str_extract(term,".+(?=–)"),
          end_term=str_extract(term,"(?<=–).+"))
+
+us_table <- us_table %>%
+  mutate(start_term=str_replace(start_term,"\\[.*",""),
+         end_term=str_replace(end_term,"\\[.*",""),
+         party=str_replace(party,"\\[.*","")) %>%
+  select(-term) 
