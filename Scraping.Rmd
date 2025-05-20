@@ -15,21 +15,6 @@ knitr::opts_chunk$set(echo = F, warning = F, message = F)
 library(tidyverse)
 library(rvest)
 library(stringr)
-library(showtext)
-
-font_add("lmroman", "/usr/local/texlive/2021/texmf-dist/fonts/opentype/public/lm/lmroman10-regular.otf")
-showtext_auto()
-
-# Create the custom theme
-custom_theme <- theme_minimal() + 
-  theme(
-    text = element_text(family = "lmroman", color = "black"),
-    axis.title = element_text(size = 10),
-    axis.text = element_text(size=10),
-    legend.title = element_text(size=10),
-    legend.text = element_text(size=10),
-    plot.title = element_text(size = 12, hjust = 0.5)
-  )
 ```
 
 # Scraping Wikipedia
@@ -218,7 +203,7 @@ ggplot(table_long, aes(x = factor(year), y = percent, fill = position)) +
   labs(title = "Vote Shares of Top Two Parties, Turkey 1950-2023",
        y = "Vote share",
        x= "") +
-  custom_theme +
+  theme_classic() +
   ylim(0,70) +
   theme(
     legend.position = "none"
