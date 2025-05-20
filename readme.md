@@ -71,4 +71,5 @@ The first four plots use the Tunisia survey data, the final four use the [V-Dem 
 ### Session 6
 - [Slides session 6](Session-6.pdf)
 - [Web scraping exercise](Scraping.pdf)
+- [Markdown code](Scraping.Rmd)
 
