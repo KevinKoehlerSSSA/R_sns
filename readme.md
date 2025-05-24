@@ -93,5 +93,5 @@ The first four plots use the Tunisia survey data, the final four use the [V-Dem 
 5. Use sentiment analysis to determine which chapter of the *War of the Worlds* is least positive.
 6. Estimate an LDA topic model to extract 4 different latent topics from *War of the Worlds*. Plot the 5 most common terms per topic and interpret what the topics are about (and if they make sense).
 
-- [Exercise code](Exercises session 7.R)
+- [Exercise code](Exercises_session_7.R)
 
