@@ -74,6 +74,12 @@ The first four plots use the Tunisia survey data, the final four use the [V-Dem 
 - [Markdown code](Scraping.Rmd)
 
 ### Session 7
+
+#### The LDA data generation process
 <img src="LDA.svg" alt="LDA Diagram" width="800"/>
+
+#### Slides and data
 - [Slides session 7](Session-7.pdf)
+- [Pride and Predjudice](pride_and_prejudice.txt)
+- [War of the Worlds](war_of_the_worlds.text)
 
