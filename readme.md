@@ -74,6 +74,6 @@ The first four plots use the Tunisia survey data, the final four use the [V-Dem 
 - [Markdown code](Scraping.Rmd)
 
 ### Session 7
-![](LDA.svg)
+<img src="LDA.svg" alt="LDA Diagram" width="400"/>
 - [Slides session 7](Session-7.pdf)
 
