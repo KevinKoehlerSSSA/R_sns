@@ -89,4 +89,5 @@ The first four plots use the Tunisia survey data, the final four use the [V-Dem 
 1. What are the 10 most frequent words in *Pride and Prejudice* and *War of the Worlds*? Create a plot comparing the top-10 terms from both books.
 2. What does the plot tell us? Repeat step one, but remove stopwords first.
 3. Create the same plot, but compare the most significant word for each book in terms of TF-IDF.
+4. Calculate how similar Chapter 2 of *Pride and Prejudice* is to Chapter 1 of *War of the Worlds*. Compare this similarity score to the similarity between Chapters 1 and 2 of *War of the Worlds*. 
 
