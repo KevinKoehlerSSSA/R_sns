@@ -81,6 +81,6 @@ The first four plots use the Tunisia survey data, the final four use the [V-Dem 
 <img src="LDA.svg" alt="LDA Diagram" width="800"/>
 
 #### Data
-- [Jane Austin,'s *Pride and Predjudice*](pride_and_prejudice.txt)
+- [Jane Austin's *Pride and Predjudice*](pride_and_prejudice.txt)
 - [H.G. Wells' *War of the Worlds*](war_of_the_worlds.text)
 
