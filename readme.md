@@ -84,3 +84,8 @@ The first four plots use the Tunisia survey data, the final four use the [V-Dem 
 - [Jane Austin's *Pride and Predjudice*](pride_and_prejudice.txt)
 - [H.G. Wells' *War of the Worlds*](war_of_the_worlds.txt)
 
+#### Exercises
+
+1. What are the 10 most frequent words in *Pride and Prejudice* and *War of the Worlds*? Create a plot comparing the top-10 terms from both books.
+2. What does the plot tell us? Repeat step one, but remove stopwords first.
+
