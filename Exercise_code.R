@@ -129,3 +129,32 @@ custom_stops <- tibble(
 
 # bind together
 stop_words <- bind_rows(stop_words, custom_stops)
+
+# Tokenize and clean
+tf_idf <- chapters %>%
+  mutate(text=gsub("_","",text)) %>% # removing _ from PandP
+  unnest_tokens(word, text) %>%
+  filter(!grepl("[0-9]", word)) %>%
+  filter(!str_detect(word, "^[[:punct:]]+$")) %>%
+  anti_join(stop_words, by = "word") %>%
+  count(title, word, sort = TRUE) %>%
+  bind_tf_idf(term = word, document = title, n=n) %>%
+  group_by(title) %>%
+  slice_max(n, n = 10) %>%
+  ungroup()
+
+tf_idf <- tf_idf %>%
+  arrange(title, -tf_idf)
+
+tf_idf %>%
+  ggplot(aes(x = reorder(word,tf_idf), y = tf_idf, fill = title)) +
+  geom_col(show.legend = FALSE) +
+  facet_wrap(~ title, scales = "free") +
+  scale_x_reordered() +
+  coord_flip() +
+  labs(
+    title = "Top 10 Words in Pride and Prejudice and War of the Worlds",
+    x = NULL,
+    y = "TF-IDF"
+  ) +
+  theme_classic()
