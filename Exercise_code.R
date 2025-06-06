@@ -140,7 +140,7 @@ tf_idf <- chapters %>%
   count(title, word, sort = TRUE) %>%
   bind_tf_idf(term = word, document = title, n=n) %>%
   group_by(title) %>%
-  slice_max(n, n = 10) %>%
+  slice_max(tf_idf, n = 10) %>%
   ungroup()
 
 tf_idf <- tf_idf %>%
@@ -157,4 +157,172 @@ tf_idf %>%
     x = NULL,
     y = "TF-IDF"
   ) +
+  theme_classic()
+
+## 4. Cosine similarity
+
+pandp <- read_csv("pride_and_prejudice.csv") 
+wotw <- read_csv("war_of_the_worlds.csv") 
+
+chapters <- rbind(pandp,wotw)
+
+# Comparing PandP, chapter 2 to WotW, Chapter 1 
+
+# Filter relevant chapters and adapt doc ID
+chapters <- chapters %>%
+  filter((title=="Pride and Prejudice" & doc=="Chapter 2") |
+           (title=="War of the Worlds" & doc=="Chapter 1")) %>%
+  mutate(doc=paste(title,doc,sep="_"))
+
+# Get stop words 
+data("stop_words")
+
+# Add custom stop words
+custom_stops <- tibble(
+  word = c("gutenberg", "project"),
+  lexicon = "custom"
+)
+
+# bind together
+stop_words <- bind_rows(stop_words, custom_stops)
+
+# Tokenize and clean
+counts <- chapters %>%
+  mutate(text=gsub("_","",text)) %>% # removing _ from PandP
+  unnest_tokens(word, text) %>%
+  filter(!grepl("[0-9]", word)) %>%
+  filter(!str_detect(word, "^[[:punct:]]+$")) %>%
+  anti_join(stop_words, by = "word") %>%
+  mutate(word = wordStem(word)) %>%   
+  count(doc, word) 
+
+dtm <- counts %>%
+  cast_dtm(document = doc, term = word, value = n)
+
+dtm_matrix <- as.matrix(dtm)
+
+cosine_sim <- function(a, b) {
+  sum(a * b) / (sqrt(sum(a^2)) * sqrt(sum(b^2)))
+}
+
+similarity <- cosine_sim(dtm_matrix[1, ], dtm_matrix[2, ])
+similarity
+
+# WotW, Chapter 1 to WotW, Chapter 2
+chapters <- rbind(pandp,wotw)
+
+# Filter relevant chapters and adapt doc ID
+chapters <- chapters %>%
+  filter((title=="War of the Worlds" & doc=="Chapter 1") |
+           (title=="War of the Worlds" & doc=="Chapter 2")) %>%
+  mutate(doc=paste(title,doc,sep="_"))
+
+# Get stop words 
+data("stop_words")
+
+# Add custom stop words
+custom_stops <- tibble(
+  word = c("gutenberg", "project"),
+  lexicon = "custom"
+)
+
+# bind together
+stop_words <- bind_rows(stop_words, custom_stops)
+
+# Tokenize and clean
+counts <- chapters %>%
+  mutate(text=gsub("_","",text)) %>% # removing _ from PandP
+  unnest_tokens(word, text) %>%
+  filter(!grepl("[0-9]", word)) %>%
+  filter(!str_detect(word, "^[[:punct:]]+$")) %>%
+  anti_join(stop_words, by = "word") %>%
+  mutate(word = wordStem(word)) %>%   
+  count(doc, word) 
+
+dtm <- counts %>%
+  cast_dtm(document = doc, term = word, value = n)
+
+dtm_matrix <- as.matrix(dtm)
+
+cosine_sim <- function(a, b) {
+  sum(a * b) / (sqrt(sum(a^2)) * sqrt(sum(b^2)))
+}
+
+similarity <- cosine_sim(dtm_matrix[1, ], dtm_matrix[2, ])
+similarity
+
+## 5. Sentiment analysis
+
+wotw <- read_csv("war_of_the_worlds.csv") 
+sentiment <- get_sentiments()
+
+chapters_sent <- wotw %>%
+  unnest_tokens(word, text) %>%
+  left_join(sentiment, by="word") %>%
+  group_by(doc) %>%
+  summarize(sentiment=(sum(sentiment=="positive", na.rm=T)/n())-(sum(sentiment=="negative", na.rm = T)/n()))
+
+ggplot(chapters_sent,
+       aes(x=reorder(doc,sentiment), y=sentiment)) +
+  geom_col() +
+  theme_classic() +
+  coord_flip() +
+  labs(
+    x="",
+    y="Sentiment (proportion of positive-proportion of negative words)",
+    title="Chapters of War of the Worlds by Sentiment"
+  )
+
+## 6. Topic model
+
+wotw <- read_csv("war_of_the_worlds.csv") 
+
+custom_stops <- tibble(
+  word = c("gutenberg", "project"),
+  lexicon = "custom"
+)
+
+data("stop_words")
+
+stop_words <- bind_rows(stop_words, custom_stops)
+
+tokens <- wotw %>%
+  unnest_tokens(word, text) %>%
+  filter(!grepl("[0-9]", word)) %>%
+  filter(!str_detect(word, "^[[:punct:]]+$")) %>%
+  anti_join(stop_words, by = "word") %>%
+  count(doc, word, sort = TRUE) %>%
+  ungroup
+
+dtm <- tokens %>%
+  cast_dtm(doc, word, n)
+
+lda_model <- LDA(dtm, k = 4,
+                 method = "Gibbs",
+                 control = list(
+                   seed = 1234),
+                 alpha = 0.01,
+                 delta = 0.01)
+
+topics <- tidy(lda_model, matrix = "beta")
+
+# View top terms per topic
+top_terms <- topics %>%
+  group_by(topic) %>%
+  top_n(10, beta) %>%
+  ungroup() %>%
+  arrange(topic, -beta)
+
+top_terms %>%
+  mutate(term = reorder_within(term, 
+                               beta, 
+                               topic)) %>%
+  ggplot(aes(term, beta, fill = factor(topic))) +
+  geom_col(show.legend = FALSE) +
+  facet_wrap(~ topic, scales = "free") +
+  scale_x_reordered() +
+  coord_flip() +
+  labs(title = "Top 10 terms per topic", 
+       x = NULL, 
+       y = "beta") +
   theme_classic()
